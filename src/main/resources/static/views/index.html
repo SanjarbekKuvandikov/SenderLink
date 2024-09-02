@@ -4,12 +4,57 @@
     <meta charset="ISO-8859-1">
     <title>Send Telegram link</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body{
+            font-family:Calibri,Helvetica,san-serif,serif;
+            background-color:whitesmoke;
+        }
+        .container{
+            padding: 50px;
+            background: lightblue;
+            width: 500px;
+            position: absolute;
+            top: 25%;
+            left: 35%;
+        }
+        input[type=text]{
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background:#f1f1f1;
+        }
+        input[type=text]:focus{
+            background-color: orange;
+            outline: none;
+        }
+        div{
+            padding: 10px 0;
+        }
+        button{
+            color: red;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body ng-app="app">
-<div ng-controller="infoController">
-    <input ng-model="fname">
-    <input ng-model="lname">
-    <input ng-model="teloremail">
+<div ng-controller="infoController" class="container">
+    <center>
+        <h1> Send Link Form </h1>
+    </center>
+    <label> Firstname: </label>
+    <input type="text" ng-model="fname" placeholder= "Enter your Firstname">
+    <label> Lastname: </label>
+    <input type="text" ng-model="lname" placeholder= "Enter your Lastname">
+    <label> Phone number or email: </label>
+    <input type="text" ng-model="teloremail" placeholder= "Enter your Phone number or email">
     <button ng-click="sendInformation(fname,lname,teloremail)"> Send a Form</button>
 </div>
 </body>
