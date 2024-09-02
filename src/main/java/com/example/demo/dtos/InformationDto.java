@@ -2,13 +2,13 @@ package com.example.demo.dtos;
 
 
 
-public class BookDto {
+public class InformationDto {
     private Long id;
     private String fname;
     private String lname;
     private String teloremail;
 
-    public BookDto(Long id, String fname, String lname, String teloremail) {
+    public InformationDto(Long id, String fname, String lname, String teloremail) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
