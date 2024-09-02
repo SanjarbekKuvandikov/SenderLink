@@ -1,74 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
     <title>Send Telegram link</title>
-    <script src="js/lib/angular.min.js"></script>
-
-<style>
-    body{
-        font-family:Calibri,Helvetica,san-serif,serif;
-        background-color:whitesmoke;
-    }
-    .container{
-        padding: 50px;
-        background: lightblue;
-        width: 500px;
-        position: absolute;
-        top: 25%;
-        left: 35%;
-    }
-    input[type=text]{
-        width: 100%;
-        padding: 15px;
-        margin: 5px 0 22px 0;
-        display: inline-block;
-        border: none;
-        background:#f1f1f1;
-    }
-    input[type=text]:focus{
-        background-color: orange;
-        outline: none;
-    }
-    div{
-        padding: 10px 0;
-    }
-    button{
-        color: red;
-        padding: 16px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-
-opacity: 0.9;
-    }
-</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
 <body ng-app="app">
-<form>
-    <div class="container">
-        <center>
-            <h1> Send Link Form </h1>
-        </center>
-        <label> Firstname: </label>
-        <input type="text" name="firstname" placeholder= "Enter your Firstname" size="15" required />
-        <label> Lastname: </label>
-        <input type="text" name="lastname" placeholder="Enter your Lastname" size="15"required />
-
-        <label>
-            <input type = "text" placeholder = "Phone or Email" required pattern = "^([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3})|(\d{3}-\d{3}-\d{4})$"/>
-            <span class = "error">Please provide a valid telephone or email</span>
-        </label>
-
-            In this example, the disabled attribute is used to disable the Reset button.
-
-            <button type="reset" value="submit" disabled> Send a Form </button>
+<div ng-controller="infoController">
+    <button ng-click="sendInformation()"> Send a Form</button>
 </div>
-</form>
 </body>
 
-</body>
+<script>
+    var myApp = angular.module('app', []);
 
+    myApp.controller("infoController", function ($scope, $http) {
+        console.log("Controller initialized"); // Add this line
+        $scope.sendInformation = function () {
+            console.log("Button clicked"); // Add this line
+            var Information = {
+                fname: 'Sanjar',
+                lname: 'Quvandikov',
+                teloremail: '+998886001332'
+            };
+
+            $http.post('/information', {
+                fname: Information.fname,
+                lname: Information.lname,
+                teloremail: Information.teloremail
+            }).then(function(response) {
+                console.log("Success", response);
+            }, function(error) {
+                console.log("Error", error);
+            });
+        }
+    });
+
+</script>
 
 </html>
