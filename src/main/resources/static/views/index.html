@@ -7,7 +7,10 @@
 </head>
 <body ng-app="app">
 <div ng-controller="infoController">
-    <button ng-click="sendInformation()"> Send a Form</button>
+    <input ng-model="fname">
+    <input ng-model="lname">
+    <input ng-model="teloremail">
+    <button ng-click="sendInformation(fname,lname,teloremail)"> Send a Form</button>
 </div>
 </body>
 
@@ -16,12 +19,12 @@
 
     myApp.controller("infoController", function ($scope, $http) {
         console.log("Controller initialized"); // Add this line
-        $scope.sendInformation = function () {
+        $scope.sendInformation = function (fname,lname,teloremail) {
             console.log("Button clicked"); // Add this line
             var Information = {
-                fname: 'Sanjar',
-                lname: 'Quvandikov',
-                teloremail: '+998886001332'
+                fname: fname,
+                lname: lname,
+                teloremail: teloremail
             };
 
             $http.post('/information', {
