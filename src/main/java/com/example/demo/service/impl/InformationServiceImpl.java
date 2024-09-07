@@ -46,6 +46,7 @@ public class InformationServiceImpl implements InformationService {
         informationsEntities.forEach(informationsEntity -> {
             InformationDto informationDto = new InformationDto();
             BeanUtils.copyProperties(informationsEntity,informationDto);
+            result.add(informationDto);
         });
         return result;
     }

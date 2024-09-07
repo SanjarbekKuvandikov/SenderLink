@@ -1,7 +1,10 @@
 package com.example.demo.dtos;
 
 
-public class InformationDto {
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class InformationDto extends ResponseDto{
     private Long id;
 
     private String firstName;
@@ -17,6 +20,10 @@ public class InformationDto {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneOrEmail = phoneOrEmail;
+    }
+
+    public InformationDto(String message, String status) {
+        super(message, status);
     }
 
     public Long getId() {

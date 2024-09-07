@@ -25,6 +25,14 @@ public class Controller {
     private ResponseEntity<InformationDto> getById(@PathVariable Long id)
     {
         InformationDto informationDto = informationService.getInformationById(id);
+        if(informationDto == null){
+            return ResponseEntity.badRequest().body(
+                    new InformationDto(
+                            "Topilmadi",
+                            "404"
+                    )
+            );
+        }
         return ResponseEntity.ok(informationDto);
     }
     @GetMapping("/information")
