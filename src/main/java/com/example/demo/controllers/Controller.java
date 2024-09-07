@@ -18,7 +18,7 @@ public class Controller {
     private ResponseEntity<ResponseDto> setInformation(@RequestBody InformationDto informationDto) {
         informationService.saveInformation(informationDto);
         return ResponseEntity.ok(
-                new ResponseDto("Successfully set information", "success")
+                new ResponseDto("Successfully set information", "SUCCESS")
         );
     }
 
@@ -31,7 +31,7 @@ public class Controller {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                     new ResponseDto(
                             "Topilmadi",
-                            "404"
+                            "NOT_FOUND"
                     )
             );
         }
