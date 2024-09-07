@@ -4,6 +4,7 @@ import com.example.demo.dtos.InformationDto;
 import com.example.demo.dtos.ResponseDto;
 import com.example.demo.service.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -22,17 +23,20 @@ public class Controller {
     }
 
     @GetMapping(value = "/information/id={id}")
-    private ResponseEntity<InformationDto> getById(@PathVariable Long id)
-    {
-        InformationDto informationDto = informationService.getInformationById(id);
-        if(informationDto == null){
-            return ResponseEntity.badRequest().body(
-                    new InformationDto(
+    private ResponseEntity<?> getById(@PathVariable Long id)
+    {InformationDto informationDto = informationService.getInformationById(id);
+
+        if (informationDto == null) {
+            // Not found, return message and status
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                    new ResponseDto(
                             "Topilmadi",
                             "404"
                     )
             );
         }
+
+        // Success, return the full InformationDto
         return ResponseEntity.ok(informationDto);
     }
     @GetMapping("/information")
