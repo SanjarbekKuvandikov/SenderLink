@@ -50,12 +50,12 @@
         <h1> Send Link Form </h1>
     </center>
     <label> Firstname: </label>
-    <input type="text" ng-model="fname" placeholder= "Enter your Firstname">
+    <input type="text" ng-model="firstName" placeholder= "Enter your Firstname">
     <label> Lastname: </label>
-    <input type="text" ng-model="lname" placeholder= "Enter your Lastname">
+    <input type="text" ng-model="lastName" placeholder= "Enter your Lastname">
     <label> Phone number or email: </label>
-    <input type="text" ng-model="teloremail" placeholder= "Enter your Phone number or email">
-    <button ng-click="sendInformation(fname,lname,teloremail)"> Send a Form</button>
+    <input type="text" ng-model="phoneOrEmail" placeholder= "Enter your Phone number or email">
+    <button ng-click="sendInformation(firstName,lastName,phoneOrEmail)"> Send a Form</button>
 </div>
 </body>
 
@@ -64,18 +64,18 @@
 
     myApp.controller("infoController", function ($scope, $http) {
         console.log("Controller initialized"); // Add this line
-        $scope.sendInformation = function (fname,lname,teloremail) {
+        $scope.sendInformation = function (firstName,lastName,phoneOrEmail) {
             console.log("Button clicked"); // Add this line
             var Information = {
-                fname: fname,
-                lname: lname,
-                teloremail: teloremail
+                firstName: firstName,
+                lastName: lastName,
+                phoneOrEmail: phoneOrEmail
             };
 
             $http.post('/information', {
-                fname: Information.fname,
-                lname: Information.lname,
-                teloremail: Information.teloremail
+                firstName: Information.firstName,
+                lastName: Information.lastName,
+                phoneOrEmail: Information.phoneOrEmail
             }).then(function(response) {
                 console.log("Success", response);
             }, function(error) {

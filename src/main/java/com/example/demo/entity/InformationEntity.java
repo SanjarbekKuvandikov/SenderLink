@@ -1,23 +1,22 @@
-package com.example.demo.dtos;
+package com.example.demo.entity;
 
+import jakarta.persistence.*;
 
-public class InformationDto {
+@Entity
+@Table(name = "Information")
+public class InformationEntity {
+    @Id
+    @GeneratedValue
     private Long id;
 
+    @Column
     private String firstName;
+
+    @Column
     private String lastName;
+
+    @Column
     private String phoneOrEmail;
-
-    public InformationDto() {
-
-    }
-
-    public InformationDto(Long id, String firstName, String lastName, String phoneOrEmail) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneOrEmail = phoneOrEmail;
-    }
 
     public Long getId() {
         return id;
