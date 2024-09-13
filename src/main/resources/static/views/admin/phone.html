@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web2</title>
+    <script src="js/lib/angular.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body ng-app="app" >
+    <header>
+        <div ng-controller="informationController" class="container">
+            <div class="sms">
+                <div class="btn__type">
+                    <a href="/gmail">
+                        <button onclick="gmailToSms()" class="gml__btn" type="submit">
+                            Gmail
+                        </button>
+                    </a>
+                </div>
+                <div class="sms__table">
+                    <table>
+                        <tr>
+                            <th class="th__id" >ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Phone number</th>
+                            <th class="th__id" >Send</th>
+                        </tr>
+                        <tr ng-repeat="information in informations">
+                            <td>{{information.id}}</td>
+                            <td>{{information.firstName}}</td>
+                            <td>{{information.lastName}}</td>
+                            <td>{{information.phoneOrEmail}}</td>
+                            <td>Send</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </header>
+</body>
+<script>
+    var myApp = angular.module('app', []);
+
+    myApp.controller("informationController", function ($scope, $http) {
+
+        $http.get('/information').then(function (response) {
+            $scope.informations = response.data;
+            console.log("Success", response);
+        }, function (error) {
+            console.log("Error", error);
+        });
+
+    });
+</script>
+
+
+</html>

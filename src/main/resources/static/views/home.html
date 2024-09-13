@@ -3,7 +3,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Send Telegram link</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
     <style>
         body{
             font-family:Calibri,Helvetica,san-serif,serif;
@@ -33,7 +33,7 @@
             padding: 10px 0;
         }
         button{
-            color: red;
+            color: black;
             padding: 16px 20px;
             margin: 8px 0;
             border: none;
@@ -63,7 +63,7 @@
     var myApp = angular.module('app', []);
 
     myApp.controller("infoController", function ($scope, $http) {
-        console.log("Controller initialized"); // Add this line
+        console.log("Controller initialized");
         $scope.sendInformation = function (firstName,lastName,phoneOrEmail) {
             console.log("Button clicked"); // Add this line
             var Information = {

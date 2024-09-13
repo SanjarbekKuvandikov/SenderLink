@@ -1,0 +1,15 @@
+@import "./sms";
+@import "./gmail";
+
+
+*{
+    max-width: 1440px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
