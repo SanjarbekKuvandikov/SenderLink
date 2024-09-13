@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web2</title>
     <script src="js/lib/angular.min.js"></script>
+    <script src="js/main.js"></script>
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body ng-app="app" >
@@ -42,20 +43,6 @@
         </div>
     </header>
 </body>
-<script>
-    var myApp = angular.module('app', []);
-
-    myApp.controller("informationController", function ($scope, $http) {
-
-        $http.get('/information').then(function (response) {
-            $scope.informations = response.data;
-            console.log("Success", response);
-        }, function (error) {
-            console.log("Error", error);
-        });
-
-    });
-</script>
 
 
 </html>

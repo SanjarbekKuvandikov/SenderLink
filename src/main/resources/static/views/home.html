@@ -4,6 +4,7 @@
     <meta charset="ISO-8859-1">
     <title>Send Telegram link</title>
     <script src="js/lib/angular.min.js"></script>
+    <script src="js/main.js"></script>
     <style>
         body{
             font-family:Calibri,Helvetica,san-serif,serif;
@@ -58,32 +59,5 @@
     <button ng-click="sendInformation(firstName,lastName,phoneOrEmail)"> Send a Form</button>
 </div>
 </body>
-
-<script>
-    var myApp = angular.module('app', []);
-
-    myApp.controller("infoController", function ($scope, $http) {
-        console.log("Controller initialized");
-        $scope.sendInformation = function (firstName,lastName,phoneOrEmail) {
-            console.log("Button clicked"); // Add this line
-            var Information = {
-                firstName: firstName,
-                lastName: lastName,
-                phoneOrEmail: phoneOrEmail
-            };
-
-            $http.post('/information', {
-                firstName: Information.firstName,
-                lastName: Information.lastName,
-                phoneOrEmail: Information.phoneOrEmail
-            }).then(function(response) {
-                console.log("Success", response);
-            }, function(error) {
-                console.log("Error", error);
-            });
-        }
-    });
-
-</script>
 
 </html>
