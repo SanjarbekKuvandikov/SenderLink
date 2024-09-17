@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Table</title>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/main.js"></script>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body ng-app="app">
     <header>
-        <div class="container">
+        <div ng-controller="informationController" class="container">
             <div class="sms">
                 <div class="btn__type">
                     <a href="phone.html">
@@ -26,12 +28,12 @@
                             <th>Gmail</th>
                             <th class="th__id" >Send</th>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr ng-repeat="email in emails">
+                            <td>{{email.id}}</td>
+                            <td>{{email.firstName}}</td>
+                            <td>{{email.lastName}}</td>
+                            <td>{{email.phoneOrEmail}}</td>
+                            <td>Send</td>
                         </tr>
                     </table>
                 </div>
