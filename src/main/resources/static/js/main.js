@@ -8,7 +8,6 @@ myApp.controller("informationController", function ($scope, $http) {
     }, function (error) {
         console.log("Error", error);
     });
-
 });
 
 myApp.controller("infoController", function ($scope, $http) {
@@ -19,6 +18,15 @@ myApp.controller("infoController", function ($scope, $http) {
             firstName: firstName,
             lastName: lastName,
             phoneOrEmail: phoneOrEmail
+        };
+        $scope.successMessage = "";
+
+        $scope.sendInformation = function(firstName, lastName, phoneOrEmail) {
+            if (firstName && lastName && phoneOrEmail) {
+                $scope.successMessage = "Form sent successfully! We will get in touch with you shortly.";
+            } else {
+                $scope.successMessage = "Please fill out all fields!";
+            }
         };
 
         $http.post('/information', {

@@ -3,6 +3,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Send Telegram link</title>
+    <link rel="stylesheet" href="/css/_home.scss">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/main.js"></script>
     <style>
@@ -57,6 +58,10 @@
     <label> Phone number or email: </label>
     <input type="text" ng-model="phoneOrEmail" placeholder= "Enter your Phone number or email">
     <button ng-click="sendInformation(firstName,lastName,phoneOrEmail)"> Send a Form</button>
+
+    <div ng-show="successMessage" class="success-message" style="color: green; margin-top: 20px;">
+        {{ successMessage }}
+    </div>
 </div>
 </body>
 
